@@ -10,13 +10,26 @@ class Solution:
         """Given an integer array nums, in which exactly two elements appear only once and all
         the other elements appear exactly twice. Find the two elements that appear only once. 
         You can return the answer in any order."""
+
+        # Sort the list so that repeated elements are adjacent.
         nums.sort()
+
+        # Initialize the two single numbers to 0.
         a = 0
         b = 0
+
+        # In the following logic we will use XOR to find the two single numbers.
+        # Reminder: 1.a XOR a = 0
+        #           2.a XOR 0 = 0
+        #           3.a XOR b XOR a = b
         for num in nums:
+            # By XORing through the elements of the array, the pairs of numbers will cancel
+            # out and the single numbers will remain.
             if a^num == num or a^num == 0:
+                # This will run until the first single number is found.
                 a^=num
                 continue
+            # This will start running after the first single number is found.
             b^=num
         return [a, b]
     
