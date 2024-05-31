@@ -1,7 +1,7 @@
 """
 20. Valid Parentheses
 
-https://leetcode.com/problems/two-sum/description/
+https://leetcode.com/problems/valid-parentheses/description/
 """
 
 class Solution:
