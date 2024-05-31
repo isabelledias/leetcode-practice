@@ -7,17 +7,17 @@ https://leetcode.com/problems/number-of-steps-to-reduce-a-number-in-binary-repre
 class Solution:
     def numSteps(self, s: str) -> int:
         counter = 0
-        while s  != '1':
+        while s != '1':
             counter += 1
             if s[-1] == '0':
                 s = s[:-1]
                 continue
+
+            idx = s.rfind('0')
+            if idx != -1:
+                s = s[:idx] + '1' + (len(s)-idx-1)*'0'
             else:
-                idx = s.rfind('0')
-                if idx != -1:
-                    s = s[:idx] + '1' + (len(s)-idx-1)*'0'
-                else:
-                    s = '1' + len(s)*'0'
+                s = '1' + len(s)*'0'
         return counter
             
             
